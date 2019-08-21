@@ -27,7 +27,7 @@ class LiveView(QFrame):
 
         self.pixmap = QPixmap()
         self.image = None
-        #self.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        # self.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         self.setFrameStyle(QFrame.Panel | QFrame.Raised)
         self.setLineWidth(2)
         self.setToolTip("Click image to focus camera at mouse location")
@@ -53,10 +53,10 @@ class LiveView(QFrame):
         painter.drawPixmap(0, 0, w, h, self.pixmap)
 
         if self.displayGrid:
-            line1 = QLine(0, h/3, w, h/3)
-            line2 = QLine(0, 2 * h/3, w, 2 * h/3)
-            line3 = QLine(w/3, 0, w/3, h)
-            line4 = QLine(2 * w/3, 0, 2 * w/3, h)
+            line1 = QLine(0, h / 3, w, h / 3)
+            line2 = QLine(0, 2 * h / 3, w, 2 * h / 3)
+            line3 = QLine(w / 3, 0, w / 3, h)
+            line4 = QLine(2 * w / 3, 0, 2 * w / 3, h)
 
             painter.drawLine(line1)
             painter.drawLine(line2)
@@ -99,7 +99,6 @@ class LiveView(QFrame):
             x = (event.x() * 100.0) / self.width()
             y = (event.y() * 100.0) / self.height()
             self.emit(SIGNAL('clicked(int, int)'), x, y)
-
 
 
 class MyMainWindow(QWidget):
@@ -214,8 +213,8 @@ class MyMainWindow(QWidget):
         vlayout.addWidget(self.connectButton)
 
         mainlayout.addWidget(self.liveView, 0, 0)
-        mainlayout.setColumnStretch(0,0)
-        mainlayout.setColumnStretch(0,1)
+        mainlayout.setColumnStretch(0, 0)
+        mainlayout.setColumnStretch(0, 1)
         mainlayout.addLayout(vlayout, 0, 1)
 
     def changeGuiState(self, state):
@@ -258,11 +257,11 @@ class MyMainWindow(QWidget):
         v = self.camera.sendCameraCommand('setTouchAFPosition', [x, y])
 
     def changeStillSize(self):
-        if self.shootModeCombo.currentIndex() == 0: 
+        if self.shootModeCombo.currentIndex() == 0:
             index = self.stillSizeCombo.currentIndex()
             aspect = self.camera.supportedStillSizes[index]['aspect']
             size = self.camera.supportedStillSizes[index]['size']
-            print((aspect,size))
+            print((aspect, size))
             self.camera.sendCameraCommand('setStillSize', ['%s' % aspect, '%s' % size])
 
     def changeShootMode(self):
@@ -292,7 +291,8 @@ class MyMainWindow(QWidget):
         self.stillSizeCombo.clear()
 
         if self.camera.supportedStillSizes:
-            self.comboList = ['Aspect Ratio: %s, Size: %s' % (d['aspect'], d['size']) for d in self.camera.supportedStillSizes]
+            self.comboList = ['Aspect Ratio: %s, Size: %s' % (d['aspect'], d['size']) for d in
+                              self.camera.supportedStillSizes]
             self.stillSizeCombo.addItems(self.comboList)
 
     def stopLiveView(self):
@@ -349,20 +349,18 @@ class MyMainWindow(QWidget):
                 print(("Unable to save file %s.jpg" % newFilePath))
 
 
-#---------------------------------------------------Main--------------------------------------------
+# ---------------------------------------------------Main--------------------------------------------
 def main(args):
-    app=QApplication(args)
+    app = QApplication(args)
     win = MyMainWindow(app)
     app.connect(app, SIGNAL("lastWindowClosed()"), app, SLOT("quit()"))
     win.show()
     app.exec_()
 
 
+# --------------------------------------------------End of Main---------------------------------------------
 
-#--------------------------------------------------End of Main---------------------------------------------
 
-
-#Run this as a script if running stand alone
-if __name__=="__main__":
+# Run this as a script if running stand alone
+if __name__ == "__main__":
     main(sys.argv)
-
