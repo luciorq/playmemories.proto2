@@ -17,6 +17,12 @@ from PyQt4.QtSvg import *
 from PIL import Image
 from functools import reduce
 
+# prerequisites
+try:
+    import PyQt4
+except:
+    os.system("pip install -r requirements.txt")
+    os.system("sudo apt install -y python-qt4")
 
 class LiveView(QFrame):
     INIT_WIDTH = 640.0
