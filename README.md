@@ -5,7 +5,7 @@ This is a quick and dirty python application that allows my 2 Sony Lens-Style DS
 I learned from this this website (https://developer.sony.com/develop/cameras/)
 
 <p align="left">
-  <img src="Screenshot_1.png" height="400">
+  <img src="Screenshot_1.png" width="420">
 </p>
 
 ## _get
