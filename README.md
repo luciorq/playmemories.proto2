@@ -14,6 +14,8 @@ I learned from this this website (https://developer.sony.com/develop/cameras/)
 $ git clone https://github.com/loouislow81/playmemories.proto2.git
 ```
 
+or, you can [download the binary](https://github.com/loouislow81/playmemories.proto2/releases), without doing it yourself, it's a straight forward click-n-run.
+
 ## _run
 
 connect your computer and the camera on the same WiFi connection,
